@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KurolZ的博客</title>
+</head>
+<body>
+
+<div class="header">
+    {% include "header.html" %}
+</div>
+{% include "left.html" %}
+<div class="blog_lists" style="width:65.33%; float: left;">
+    {% for blog in blogs %}
+        <div class="container-fluid">
+            <div class="blog">
+                <div class="title">
+                    <a href="{% url 'blog_get_detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
+                </div>
+                <div class="info">
+                    分类：<span class="category" style="color: #ff9900;">{{ blog.category.name }}</span>
+                    作者：<span class="author" style="color: #4a86e8">{{ blog.author }}</span>
+                    <span class="created" style="color: #6aa84f">{{ blog.created|date:"Y-m-d H:i" }}</span>
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"><a class="browser_num">{{ blog.browser }}</a></span>
+{#                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>#}
+                </div>
+                {% autoescape off %}
+                <div class="summary" style="color:#666">
+                    {{ blog.description }}
+                </div>
+                <hr style="border-top:1px solid #c4c7ce;width:70%;" align="left">
+                {% endautoescape %}
+            </div>
+        </div>
+    {% endfor %}
+    <nav aria-label="Page navigation ">
+      <ul class="pagination pagination-lg">
+          {% if blogs.has_previous %}
+              <li>
+                  <a href="?page=1" aria-label="Previous"><span aria-hidden="true">首页</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="?page={{ blogs.previous_page_number }}" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                  </a>
+              </li>
+        {% endif %}
+        {% for p in page_range %}
+            {% ifequal p blogs.number %}
+                <li>
+                    <span class="fy">{{p}}</span>
+                </li>
+            {% else %}
+                <li>
+                    <a href="?page={{p}}">{{p}}</a>
+                </li>
+            {% endifequal %}
+        {% endfor %}
+        {% if blogs.has_next %}
+            <li>
+                <a href="?page={{ blogs.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            <li>
+                <a href="?page={{ blogs.paginator.num_pages }}"><span aria-hidden="true">尾页</span></a>
+            </li>
+        {% endif %}
+      </ul>
+    </nav>
+</div>
+<div class="datetime" style="width: 16.77%; float: right">
+{% include  "datetime.html" %}
+</div>
+</body>
+</html>

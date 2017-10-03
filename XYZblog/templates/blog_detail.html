@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "header.html" %}
+    <title>{{ blog.title }} - KurolZ的博客</title>
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row-fluid">
+        <div class="header">
+            <ul class="breadcrumb">
+                <li><a href="{% url 'blog_get_blogs' %}">博客</a> <span class="divider">/</span></li>
+                <li><a href="{% url 'blog_get_detail' blog.id %}">{{ blog.title }}</a> <span class="divider">/</span></li>
+            </ul>
+        </div>
+    <div class="datetime" style="width: 16.77%; float: right">
+{% include  "datetime.html" %}
+</div>
+ {% include "left.html" %}
+    <div class="blogandcomment" style="width: 65.33%; float: left">
+        <div class="well"  style="background-color: #e3e7ee">
+            <div class="blog">
+                <div class="title">
+                    <a href="#"><h2>{{ blog.title }}</h2></a>
+                </div>
+                <div class="info">
+                    分类：<span class="category" style="color: #ff9900;">{{ blog.category.name }}</span>
+                    作者：<span class="author" style="color: #4a86e8">{{ blog.author }}</span>
+                    <span class="created" style="color: #6aa84f">{{ blog.created|date:"Y-m-d H:i" }}</span>
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"><a class="browser_num">{{ blog.browser }}</a></span>
+{#                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>#}
+                </div>
+                <ul class="nav nav-list">
+                    <li role="separator" class="divider"></li>
+                </ul>
+                {% autoescape off %}
+                <div class="summary">
+                    {{ blog.content }}
+                </div>
+                {% endautoescape %}
+            </div>
+        </div>
+        <div class="well">
+            <div class="comment">
+                <div class="comments-display" style="padding-top: 20px;">
+                    <h3>评论</h3>
+                    {% for comment in comments %}
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">{{ comment.name }}：</div>
+                            <div class="panel-body">
+                                {{ comment.content }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="comment-post" style="padding-top: 20px;">
+                    <h3>提交评论</h3>
+                        <form action="{% url 'blog_get_detail' blog.id %}" method="post">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">{{ field.label }}</label>{{ field }}
+                                </div>
+                            {% endfor %}
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<div class="span2" style="float: left; width: 320px">
+    <div class="list-group">
+        <ul class="col-sm-12" style="float:inherit;">
+            <a href="#" class="list-group-item active">文章分类</a>
+            {% for categorys in class_blognum %}
+                <a href="{% url 'class_get_blogs' categorys.id %}" class="list-group-item">{{ categorys.name }}
+                    <span class="badge">{{ categorys.count }}</span>
+                </a>
+            {% endfor %}
+        </ul>
+        <br>
+        <ul class="col-sm-12" style="float:inherit;">
+            <a href="#" class="list-group-item active">链接</a>
+            <a href="https://github.com/kurolz" target="_blank" class="list-group-item">Github</a>
+            <a href="http://blog.csdn.net/hjxzt1" target="_blank" class="list-group-item">CSDN</a>
+        </ul>
+        <br>
+        <ul class="col-sm-12" style="float:inherit;">
+            <a href="#" class="list-group-item active">阅读排行</a>
+            {% for read_rank in read_rank %}
+            <a href="{% url 'blog_get_detail' read_rank.id %}" target="_blank" class="list-group-item">{{ read_rank.title|truncatechars:18}}
+                <span class="badge">{{ read_rank.browser }}</span>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+{#    <div class="list-group">#}
+{#        <ul class="col-sm-2">#}
+{#            <a href="#" class="list-group-item disabled">Cras justo odio</a>#}
+{#            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>#}
+{#            <a href="#" class="list-group-item">Morbi leo risus</a>#}
+{#            <a href="#" class="list-group-item">Porta ac consectetur ac</a>#}
+{#            <a href="#" class="list-group-item">Vestibulum at eros</a>#}
+{#        </ul>#}
+{#    </div>#}
+</div>
