@@ -1,13 +1,10 @@
 # DjangoWeb
 Background based on Django！
 
-因为本人还是学生，无法得到实际需求，所以这个项目只有用户管理功能，项目暂停，工作以后会继续完善。
-
-重新开发了一个博客网站项目继续学习：
+@@ 实例：
 
 [http://www.mykurol.com](http://www.mykurol.com)  
 
-完善后会开源。
 
 @@ 使用Docker-compose部署Django环境：
 
@@ -44,7 +41,7 @@ docker pull django:1.9.5  # 下载镜像到本地
 docker pull python:3.6.0   # 下载镜像到本地
 ```
 ```Bash
-mkdir -p /mysite/{DjangoWeb,db}
+mkdir -p /mysite/{blog,db}
 ```
 
 Dockerfile包含创建镜像所需要的全部指令。在项目根目录下创建Dockerfile文件，其内容如下：
@@ -56,7 +53,7 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 RUN mkdir /code/db
 WORKDIR /code
-ADD ./DjangoWeb/requirements.txt /code/
+ADD ./blog/requirements.txt /code/
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt 
 ADD . /code/
 ```
@@ -86,7 +83,7 @@ db:
 
 web:
   build: .
-  command: python ./DjangoWeb/manage.py runserver 0.0.0.0:8000
+  command: python ./blog/manage.py runserver 0.0.0.0:8000
   volumes:
     - .:/code
   ports:
@@ -108,7 +105,7 @@ links指向其他容器中的服务
 
 在子目录mysite下requirements.txt文件，该文件内容如下:
 ```Bash
-vim /mysite/DjangoWeb/requirements.txt 
+vim /mysite/blog/requirements.txt 
 
 django==1.9.5
 mysqlclient
@@ -134,7 +131,7 @@ docker.io/python    3.6.0               a1782fa44ef7        7 months ago        
 docker.io/django    1.9.5               c5b6e7c5c44c        17 months ago       433.4 MB
 ```
 ```Bash
-docker-compose run web django-admin.py startproject webserver ./DjangoWeb
+docker-compose run web django-admin.py startproject XYZblog ./DjangoWeb
 ```
 
 ```Bash
