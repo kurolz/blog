@@ -112,6 +112,7 @@ mysqlclient
 django-admin-bootstrapped
 bootstrap3
 pillow
+scrapy
 ```
 
 构建镜像:
