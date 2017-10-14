@@ -1,4 +1,4 @@
-# DjangoWeb
+# blog
 Background based on Django！
 
 @@ 实例：
@@ -143,7 +143,7 @@ ad0c75e2fd3d        mysite_web          "django-admin.py star"   5 minutes ago  
 77e91e05178d        mysql               "docker-entrypoint.sh"   5 minutes ago       Up 5 minutes               3306/tcp            mysite_db_1
 ```
 ```Bash
-chmod -R 777 DjangoWeb
+chmod -R 777 blog
 ```
 ```Bash
 vim blog/XYZblog/settings.py
