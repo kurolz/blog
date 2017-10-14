@@ -132,7 +132,7 @@ docker.io/python    3.6.0               a1782fa44ef7        7 months ago        
 docker.io/django    1.9.5               c5b6e7c5c44c        17 months ago       433.4 MB
 ```
 ```Bash
-docker-compose run web django-admin.py startproject XYZblog ./DjangoWeb
+docker-compose run web django-admin.py startproject XYZblog ./blog
 ```
 
 ```Bash
@@ -146,7 +146,7 @@ ad0c75e2fd3d        mysite_web          "django-admin.py star"   5 minutes ago  
 chmod -R 777 DjangoWeb
 ```
 ```Bash
-vim DjangoWeb/webserver/settings.py
+vim blog/XYZblog/settings.py
 
 DATABASES = {
     'default': {
@@ -161,13 +161,13 @@ DATABASES = {
 ```
 添加net端口映射
 ```Bash
-[root@VM_34_67_centos DjangoWeb]# docker inspect 1bf8642343e3 | grep IPAddress
+[root@VM_34_67_centos blog]# docker inspect 1bf8642343e3 | grep IPAddress
             "SecondaryIPAddresses": null,
             "IPAddress": "172.17.0.3",
                     "IPAddress": "172.17.0.3",
 ```
 ```Bash
-[root@VM_34_67_centos DjangoWeb]# iptables -t nat -A  DOCKER -p tcp --dport 80 -j DNAT --to-destination 172.17.0.3:8000     
+[root@VM_34_67_centos blog]# iptables -t nat -A  DOCKER -p tcp --dport 80 -j DNAT --to-destination 172.17.0.3:8000     
 ```
 
 现在可以将项目移入新建的项目中
