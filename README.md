@@ -110,7 +110,7 @@ vim /mysite/blog/requirements.txt
 django==1.9.5
 mysqlclient
 django-admin-bootstrapped
-bootstrap3
+django_bootstrap3
 pillow
 scrapy
 ```
