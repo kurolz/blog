@@ -18,6 +18,10 @@ from django.contrib import admin
 from XYZblog import views
 from django.views.static import serve
 from blog.settings import MEDIA_ROOT
+import blog.settings
+
+handler404 = "XYZblog.views.page_not_found"
+handler500 = "XYZblog.views.page_error"
 
 urlpatterns = [
     url(r'uploadIMG/',views.uploadIMG,name='uploadIMG'),
@@ -26,6 +30,8 @@ urlpatterns = [
     url(r'^$',views.listblogs,name='blog_get_blogs'),
     url(r'^detail/(\d+)/$',views.get_detail,name='blog_get_detail'),
     url(r'^(\d+)/$', views.listblogs, name='class_get_blogs'),
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve',{'document_root': blog.settings.STATIC_ROOT }),
+
 ]
 
 

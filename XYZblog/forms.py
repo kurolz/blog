@@ -18,3 +18,12 @@ class CommentForm(forms.Form):
         'required': '请填写您的评论内容',
         'max_length': '评论内容太长'
     },widget=forms.Textarea(attrs={'class': 'form-control','id': 'exampleInputContent','placeholder':'content','rows':'3'}))
+
+class fanyiForm(forms.Form):
+    '''
+    翻译功能表单
+    '''
+    fanyi_content = forms.CharField(label='翻译', error_messages={
+        'required': '请填写需要翻译的内容',
+        'max_length': '填写的内容太长'
+    }, widget=forms.Textarea(attrs={'class': 'form-control', 'id': 'exampleInputContent', 'placeholder': '请输入要翻译的文字', 'rows': '1'}))

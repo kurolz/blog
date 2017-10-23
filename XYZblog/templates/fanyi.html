@@ -1,0 +1,23 @@
+<form action="#" method="post">
+    {% csrf_token %}
+    <div style="width: 318px">
+        <div class="form-group" style="width: 230px; padding: 30px 5px 30px 30px; float: left">
+            {{ fanyi_form.fanyi_content }}
+        </div>
+        <button type="submit" class="btn btn-default" style="float: left;margin:30px 30px 30px 0;">翻译</button>
+        {% if fanyi_dict %}
+        <div class="fanyitext" style="width: 249px;float: left; padding: 10px; margin-left: 30px; border: 1px solid rgba(0,0,0,0.08);">
+            <p align="center">有道词典结果</p>
+            <p><b>【{{ fanyi_dict.q }}】</b></p>
+            <p><span>英：</span>
+                <span style="color: #a0a0a0;">[{{ fanyi_dict.yinshi }}]</span>
+                <span style="margin-left: 20px">美：</span>
+                <span style="color: #a0a0a0;">[{{ fanyi_dict.meishi }}]</span>
+            </p>
+                {% for explains in fanyi_dict.explains_list %}
+                <p>{{ explains }}</p>
+                {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</form>

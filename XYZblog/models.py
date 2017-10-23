@@ -22,7 +22,7 @@ class Blog(models.Model):
     """
     博客
     """
-    title = models.CharField('标题', max_length=32)
+    title = models.CharField('标题', max_length=100)
     author = models.CharField('作者', max_length=16)
     description = models.CharField('描述', max_length=200)
     content = models.TextField(blank=True, null=True,verbose_name="正文")
@@ -30,6 +30,7 @@ class Blog(models.Model):
     category = models.ForeignKey(Category, verbose_name='分类')
     tags = models.ManyToManyField(Tag, verbose_name='标签')
     browser = models.IntegerField('浏览量',editable=False,default=0)
+
 
 
     def  __str__(self):
@@ -54,3 +55,14 @@ class AdminIMG(models.Model):
 
     def  __str__(self):
         return self.filename
+
+class tianqiForm(models.Model):
+    chengshi = models.CharField(u'城市',max_length=100)
+    date = models.CharField(u'日期',max_length=30)
+    img = models.CharField(u'图片',max_length=200)
+    temperature = models.CharField(u'温度',max_length=30)
+    cloud = models.CharField(u'云',max_length=20)
+    wind = models.CharField(u'风',max_length=20)
+
+    def  __str__(self):
+        return self.chengshi

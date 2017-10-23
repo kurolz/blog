@@ -1,0 +1,16 @@
+<div class="tianqidiv" style="position:relative;width: 249px;float: left; padding-left: 10px; padding-bottom: 10px; margin-top:30px; margin-left: 30px; border: 1px solid rgba(0,0,0,0.08);text-align: center">
+    <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <button name="tianqi" type="submit" class="btn btn-default btn-sm"  style="position:absolute;right:0;top:0">
+            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+        </button>
+    </form>
+    {% for tianqi_info in tianqi_info %}
+    <p style="color: #1b6d85; padding-top: 10px;" align="center"><b>{{ tianqi_info.chengshi }}</b></p>
+    <p><span>{{ tianqi_info.date }}</span></p>
+    <p><img src="{{ tianqi_info.img }}"/></p>
+    <p><span>{{ tianqi_info.temperature }}</span></p>
+    <p><span>{{ tianqi_info.cloud }}</span></p>
+    <p><span>{{ tianqi_info.wind }}</span></p>
+    {% endfor %}
+</div>

@@ -1,10 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
-# from .models import Category, Tag, Blog, Comment,AdminIMG
-#
-# admin.site.register([Category, Tag, Blog, Comment, AdminIMG])
-
 from .models import Category, Tag, Blog, Comment,AdminIMG
 
 class AdminFormTinyMCE(admin.ModelAdmin):

@@ -1165,7 +1165,9 @@ define(
         { text: 'Java', value: 'java' },
         { text: 'C', value: 'c' },
         { text: 'C#', value: 'csharp' },
-        { text: 'C++', value: 'cpp' }
+        { text: 'C++', value: 'cpp' },
+	{ text: 'Bash', value: 'bash' },
+	{ text: 'SQL', value: 'sql' }，
       ];
 
       var customLanguages = editor.settings.codesample_languages;

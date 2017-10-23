@@ -7,7 +7,6 @@
 <body>
 
 <div class="container-fluid">
-
     <div class="row-fluid">
         <div class="header">
             <ul class="breadcrumb">
@@ -15,9 +14,7 @@
                 <li><a href="{% url 'blog_get_detail' blog.id %}">{{ blog.title }}</a> <span class="divider">/</span></li>
             </ul>
         </div>
-    <div class="datetime" style="width: 16.77%; float: right">
-{% include  "datetime.html" %}
-</div>
+{% include  "right.html" %}
  {% include "left.html" %}
     <div class="blogandcomment" style="width: 65.33%; float: left">
         <div class="well"  style="background-color: #e3e7ee">
@@ -73,4 +70,7 @@
     </div>
 </div>
 </body>
+<footer>
+    {% include "footer.html" %}
+</footer>
 </html>

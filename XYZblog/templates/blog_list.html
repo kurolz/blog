@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>KurolZ的博客</title>
+    {% load staticfiles %}
+    <link rel="bookmark"  type="image/x-icon"  href="{% static "images/favicon.ico" %}">
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
 </head>
 <body>
 
@@ -10,7 +13,7 @@
     {% include "header.html" %}
 </div>
 {% include "left.html" %}
-<div class="blog_lists" style="width:65.33%; float: left;">
+<div class="blog_lists" style="width:60.33%; float: left;">
     {% for blog in blogs %}
         <div class="container-fluid">
             <div class="blog">
@@ -70,8 +73,9 @@
       </ul>
     </nav>
 </div>
-<div class="datetime" style="width: 16.77%; float: right">
-{% include  "datetime.html" %}
-</div>
+    {% include "right.html" %}
 </body>
+<footer>
+    {% include "footer.html" %}
+</footer>
 </html>

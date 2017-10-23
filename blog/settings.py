@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'sj5_zg6kgx@y3d5ov=fi1w3@r)7@*ld%v3skg=1z!mx^-1moy9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.mykurol.com','yw.mykurol.com','fm.mykurol.com']
 
 
 # Application definition
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'XYZblog.apps.XyzblogConfig',
-    # 'ckeditor'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -60,6 +59,7 @@ TEMPLATES = [
         ],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug': DEBUG,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -77,13 +77,22 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mysitedb',
+        'USER': 'root',
+        'PASSWORD': '888888',
+        'HOST': 'db',
+        'PORT': 3306,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -122,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR,'static/')
+STATIC_ROOT = os.path.join(BASE_DIR,'static/')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
@@ -131,6 +140,7 @@ STATICFILES_DIRS = [
 DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 from django.contrib import messages
 
+
 MESSAGE_TAGS = {
             messages.SUCCESS: 'alert-success success',
             messages.WARNING: 'alert-warning warning',
@@ -138,23 +148,8 @@ MESSAGE_TAGS = {
 }
 
 CKEDITOR_JQUERY_URL ='https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'
-# CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, 'static/upload')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/upload/img')
 
-#Tinymce
-# TINYMCE_JS_URL = os.path.join(BASE_DIR, 'static/tinymce/tiny_mce_src.js')
-# TINYMCE_JS_ROOT = os.path.join(BASE_DIR, 'static/tinymce')
-# TINYMCE_JS_URL='/static/tinymce/tiny_mce_src.js'
-# TINYMCE_JS_ROOT='/static/tinymce/'
 
-# TINYMCE_DEFAULT_CONFIG = {
-# 'plugins': "table,spellchecker,paste,searchreplace,syntaxhl",
-# 'theme': 'advanced',
-# 'theme_advanced_buttons3':'syntaxhl',
-# 'theme_advanced_toolbar_location' : 'top',
-# 'theme_advanced_toolbar_align' : 'left',
-# 'width': 600,
-# 'height': 400,
-# }
-TINYMCE_SPELLCHECKER = True
+

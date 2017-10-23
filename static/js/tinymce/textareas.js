@@ -6,7 +6,7 @@ tinymce.init({
         "advlist autolink lists link image charmap print preview hr anchor pagebreak",
         "searchreplace wordcount visualblocks visualchars code fullscreen",
         "insertdatetime media nonbreaking save table contextmenu directionality",
-        "emoticons template paste textcolor codesample"
+        "emoticons template paste textcolor colorpicker codesample"
     ],
     toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
     toolbar2: "print preview media | forecolor backcolor emoticons codesample",
@@ -25,7 +25,9 @@ tinymce.init({
         {text: 'Java', value: 'java'},
         {text: 'C', value: 'c'},
         {text: 'C#', value: 'csharp'},
-        {text: 'C++', value: 'cpp'}
+        {text: 'C++', value: 'cpp'},
+	{text: 'Bash', value: 'bash'},
+	{text: 'SQL', value: 'sql'},
     ],
     paste_data_images:true,
     file_browser_callback: function(field_name, url, type, win) {
