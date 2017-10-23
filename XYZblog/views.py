@@ -194,7 +194,7 @@ def sendMail(blog,content):
     # 第三方 SMTP 服务
     mail_host = "smtp.163.com"  # 设置smtp服务器，例如：smtp.163.com
     mail_user = "kurolz@163.com"  # 发送的邮箱用户名
-    mail_pass = "asd2411"  # 发送的邮箱密码
+    mail_pass = "**********"  # 发送的邮箱密码
 
     sender = 'kurolz@163.com'  # 发送的邮箱
     receivers = 'kurolz@163.com'  # 接收的邮箱
