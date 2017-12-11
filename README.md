@@ -1,6 +1,12 @@
 # blog
 Background based on Django！
 
+
+@ 本人联系Email：kurolz@163.com
+
+@ 欢迎交流
+
+
 @@ 实例：
 
 [http://www.mykurol.com](http://www.mykurol.com)  
