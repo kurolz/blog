@@ -31,11 +31,5 @@ urlpatterns = [
     url(r'^detail/(\d+)/$',views.get_detail,name='blog_get_detail'),
     url(r'^(\d+)/$', views.listblogs, name='class_get_blogs'),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve',{'document_root': blog.settings.STATIC_ROOT }),
-
+    
 ]
-
-
-
-
-
-

@@ -14,7 +14,7 @@ importlib.reload(sys)
 class WeatherPipeline(object):
     def process_item(self, item, spider):
         # 打开数据库连接
-        db = MySQLdb.connect(host="172.17.0.2", user="root", passwd="888888", db="mysitedb",charset="utf8")
+        db = MySQLdb.connect(host="172.17.0.2", user="root", passwd="******", db="mysitedb",charset="utf8")
         # 使用cursor()方法获取操作游标
         cursor = db.cursor()
         max_price = 5

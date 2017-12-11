@@ -6,9 +6,9 @@
         </button>
     </form>
     {% for tianqi_info in tianqi_info %}
-    <p style="color: #1b6d85; padding-top: 10px;" align="center"><b>{{ tianqi_info.chengshi }}</b></p>
+    <p style="color: #1b6d85; padding-top: 10px;" align="center"><b>{{ tianqi_info.chengshi }}今日天气</b></p>
     <p><span>{{ tianqi_info.date }}</span></p>
-    <p><img src="{{ tianqi_info.img }}"/></p>
+    <p><img src="{{ tianqi_info.img }}" style="width: 80px; height: 80px;"/></p>
     <p><span>{{ tianqi_info.temperature }}</span></p>
     <p><span>{{ tianqi_info.cloud }}</span></p>
     <p><span>{{ tianqi_info.wind }}</span></p>

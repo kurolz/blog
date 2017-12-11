@@ -1,3 +1,6 @@
+# Create your views here.
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from .models import Blog,Comment,Category,tianqiForm
 from django.http import Http404
@@ -8,8 +11,8 @@ from django.core.paginator import PageNotAnInteger, Paginator, InvalidPage, Empt
 # 404
 def page_not_found(request):
     return render(request,'404.html')
-
-# 500
+500
+# 
 def page_error(request):
     return render(request,'500.html')
 
@@ -24,7 +27,21 @@ def listblogs(request,cate_id = 0):
             getblog = Blog.objects.filter(category_id=cate_id).order_by('-created')
         except Blog.DoesNotExist:
             raise Http404
-    # class_id = Category.objects.only('id').get(name = 'Django')
+    # 翻译 #
+    fanyi_dict = {}
+    fanyi_form = fanyiForm()
+    if request.method == 'POST':
+        fanyi_form = fanyiForm(request.POST)
+        if 'tianqi' in request.POST:
+            shuaxinTianqi()
+        if fanyi_form.is_valid():
+            fanyi_dict = youdaofanyi(request)
+        # 搜索 #
+        if 'header_search' in request.POST:
+            search_speech = request.POST.get('search','')
+            getblog = Blog.objects.filter(title__icontains=search_speech) 
+            
+            
     class_blognum = wenzhangfenlei()  # 获取博客分类
     after_range_num = 2  # 当前页前显示2页
     befor_range_num = 2  # 当前页后显示2页
@@ -43,15 +60,7 @@ def listblogs(request,cate_id = 0):
         page_range = paginator.page_range[page - after_range_num:page + befor_range_num]
     else:
         page_range = paginator.page_range[0:int(page) + befor_range_num]
-    # 翻译 #
-    fanyi_dict = {}
-    fanyi_form = fanyiForm()
-    if request.method == 'POST':
-        fanyi_form = fanyiForm(request.POST)
-        if 'tianqi' in request.POST:
-            shuaxinTianqi()
-        if fanyi_form.is_valid():
-            fanyi_dict = youdaofanyi(request)
+
 
     #     #
     read_rank = readrank()  # 获取阅读排行榜
@@ -194,7 +203,7 @@ def sendMail(blog,content):
     # 第三方 SMTP 服务
     mail_host = "smtp.163.com"  # 设置smtp服务器，例如：smtp.163.com
     mail_user = "kurolz@163.com"  # 发送的邮箱用户名
-    mail_pass = "asd2411"  # 发送的邮箱密码
+    mail_pass = "******"  # 发送的邮箱密码
 
     sender = 'kurolz@163.com'  # 发送的邮箱
     receivers = 'kurolz@163.com'  # 接收的邮箱
@@ -215,4 +224,3 @@ def sendMail(blog,content):
     except smtplib.SMTPException as e:
         result = "Error: 无法发送邮件" + str(e)
     return result
-
